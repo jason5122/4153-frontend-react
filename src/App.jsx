@@ -1,36 +1,23 @@
 import { Component, useState } from 'react';
 import './App.css';
-import NavBar from './pages/Feed.jsx';
-
-
+import NavBar from './components/Feed.jsx';
+import Comments from './components/Comments.jsx'
 function Greeting({ name }) {
   return (
-    <div class = "main-header">
+    <div className = "main-header">
       <h1>Hello, {name}!</h1>
+      <Comments currentUserId="1"/> {/* ADD BACKEND CONNECTION TO RETRIEVE COMMENT HERE*/}
     </div>
   ) 
 }
 
-function UserList() {
-  const data = [
-    { username: 'person1', email: 'person1@email.com' },
-    { username: 'person2', email: 'person2@email.com' },
-  ];
 
-  return (
-    <ul>
-      {data.map((u) => <li key={u.username}>{u.email}</li>)}
-    </ul>
-  );
-}
 
 function App() {
   return (
     <>
       <NavBar />
-      <Greeting name='Person 1' />
-      <UserList /> 
-      
+      <Greeting name='Person 1' />      
     </>
   );
 }
