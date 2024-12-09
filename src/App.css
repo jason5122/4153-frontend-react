@@ -40,3 +40,56 @@
 .read-the-docs {
   color: #888;
 }
+
+.menu-bar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.menu-btn {
+  padding: 10px;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 300ms ease;
+}
+
+.menu-btn:hover {
+  background-color: #5a5fd0;
+  filter: drop-shadow(0 0 1em #646cff);
+}
+
+.dropdown {
+  list-style-type: none;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+  padding: 10px;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 150px;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.dropdown li {
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .menu-bar {
+    top: 10px;
+    right: 10px;
+  }
+}

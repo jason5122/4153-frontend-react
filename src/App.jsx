@@ -1,6 +1,7 @@
 import { Component, useState } from 'react';
 import './App.css';
 import NavBar from './pages/Feed.jsx';
+import MenuBar from './menu/Options.jsx';
 
 
 function Greeting({ name }) {
@@ -24,10 +25,12 @@ function UserList() {
   );
 }
 
+
 function App() {
   return (
     <>
       <NavBar />
+      <MenuBar />
       <Greeting name='Person 1' />
       <UserList /> 
       
