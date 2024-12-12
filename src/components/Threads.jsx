@@ -1,8 +1,8 @@
+import './../css_files/Threads.css'
 import { useState, useEffect } from 'react';
 import {
     getComments as getCommentsApi
 } from './api.js'
-import Comments from './Comments.jsx'
 import { Link } from 'react-router-dom'
 
 
@@ -43,8 +43,12 @@ function Threads(){
             <ul className = "threads-list">
                 {/* Get all thread topics */}
                 {threads.map( thread => (
-                    <li key = {thread.threadKey} className = "thread-itemk">
-                        <Link to={`/comments/${thread.threadKey}`} state = {{threadTitle: thread.threadTitle}}> {thread.threadTitle} </Link> 
+                    <li key = {thread.threadKey} className = "thread-items">
+                        <Link 
+                            to={`/comments/${thread.threadKey}`} 
+                            state = {{threadTitle: thread.threadTitle}} 
+                            className = "thread-links"> {thread.threadTitle} 
+                        </Link> 
                     </li>
                 ))}
             </ul>

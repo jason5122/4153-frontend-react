@@ -1,0 +1,32 @@
+/* ======== Threads CSS ==========*/
+
+.threads-title{
+    font-size: 50px;
+}
+.threads-list{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.thread-items{
+    display: flex;
+    padding: 25px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+}
+.thread-items:hover{
+    background-color: #414040;
+    box-shadow: 0 4px 8px rgba(0, 0,0,0.2)
+}
+.thread-links{
+    display : block;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    font-size: 25px;
+    
+}
