@@ -12,8 +12,8 @@ function App() {
   return (
     <>
     <NavBar />
-    <Threads />
     <Routes>
+      <Route path = "/" element = {<Threads />}/>
       <Route path = "/comments/:threadKey" element = {<Comments currentUserId = "1" />}/> 
     </Routes>
     

@@ -77,15 +77,18 @@ export const getComments = async () => {
   {/*   
     Below are MOCK functions that should return information from the backend 
     userId should not be passed to the createComment API, backened should know this via which user is logged in
+    createComment is for comments under the same thread. 
     */}
-  export const createComment = async (text, parentId = null) => {
+  export const createComment = async (text,  threadKey, threadTitle, parentId = null) => {
     return {
-      id: Math.random().toString(36).substr(2, 9),
-      body: text,
-      parentId,
-      userId: "1",
-      username: "John",
-      createdAt: new Date().toISOString(),
+        threadKey: threadKey,
+        threadTitle: threadTitle,
+        id: Math.random().toString(36).substr(2, 9),
+        body: text,
+        parentId,
+        userId: "1",
+        username: "John",
+        createdAt: new Date().toISOString(),
     };
   };
   

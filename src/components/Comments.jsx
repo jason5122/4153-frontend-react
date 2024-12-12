@@ -8,16 +8,17 @@ import {
 import Comment from './Comment.jsx'
 import CommentForm from './CommentForm.jsx'
 import './../css_files/comments.css'
-import { useParams } from 'react-router-dom';
+import { useParams , useLocation } from 'react-router-dom';
 
 
 function Comments({currentUserId}){
     const [isLoading, setLoading] = useState(false);
     const [backendComments, setBackendComments] = useState([]);
     const [activeComment, setActiveComment] = useState(null);
+    
+    const threadKey = useParams().threadKey
+    const threadTitle = useLocation().state.threadTitle
 
-    const key = useParams();
-    const threadKey = key.threadKey;
 
 
     {/* 
@@ -41,8 +42,7 @@ function Comments({currentUserId}){
     
         */}
     const addComment = (text, parentId) => {
-        console.log("addComment", text, parentId);
-        createCommentApi(text, parentId).then(comment => {
+        createCommentApi(text, threadKey, threadTitle, parentId).then(comment => {
             setBackendComments([comment, ...backendComments]);
             setActiveComment(null);
         })
@@ -87,9 +87,11 @@ function Comments({currentUserId}){
         
     }, [])
 
+
+
     return(
         <div className = "comments">
-            <h3 className = "comments-title"> Comments </h3>
+            <h3 className = "comments-title"> {threadTitle} </h3>
             <div className ="comment-form-title">Write comment</div>
             <CommentForm submitLabel="Comment" handleSubmit ={addComment}/>
             {!isLoading && 
@@ -97,7 +99,7 @@ function Comments({currentUserId}){
                 {/* Get all root comments from backend */}
                 {rootComments.map(rootComment => (
                     <Comment 
-                    key={rootComment.id} 
+                    key={rootComment.id}
                     comment={rootComment} 
                     replies={getReplies(rootComment.id)}
                     currentUserId={currentUserId}

@@ -3,7 +3,7 @@ import {
     getComments as getCommentsApi
 } from './api.js'
 import Comments from './Comments.jsx'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -37,7 +37,6 @@ function Threads(){
         })
         setLoading(false);
     }, [])
-
     return (
         <div className = "threads">
             <h2 className = "threads-title"> Threads </h2>
@@ -45,7 +44,7 @@ function Threads(){
                 {/* Get all thread topics */}
                 {threads.map( thread => (
                     <li key = {thread.threadKey} className = "thread-itemk">
-                        <Link to={`/comments/${thread.threadKey}`}> {thread.threadTitle}</Link> 
+                        <Link to={`/comments/${thread.threadKey}`} state = {{threadTitle: thread.threadTitle}}> {thread.threadTitle} </Link> 
                     </li>
                 ))}
             </ul>
