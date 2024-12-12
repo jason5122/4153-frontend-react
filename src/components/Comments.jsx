@@ -8,15 +8,25 @@ import {
 import Comment from './Comment.jsx'
 import CommentForm from './CommentForm.jsx'
 import './../css_files/comments.css'
+import { useParams } from 'react-router-dom';
+
 
 function Comments({currentUserId}){
+    const [isLoading, setLoading] = useState(false);
     const [backendComments, setBackendComments] = useState([]);
     const [activeComment, setActiveComment] = useState(null);
 
-    {/* for fetching root comments, which are comments with NULL parentId */}
-    const rootComments = backendComments.filter( 
-        backendComment => backendComment.parentId === null);
+    const key = useParams();
+    const threadKey = key.threadKey;
 
+
+    {/* 
+        fetches root comments corresponding to the proper thread and have NULL parentId
+     */}
+    const rootComments = backendComments.filter( 
+        (backendComment) => backendComment.threadKey === threadKey &&  backendComment.parentId === null);
+
+        
     {/* get all replies (replies have same parent ID) and sort with latest comments last */}
     const getReplies = (commentId) => {
         return backendComments
@@ -65,16 +75,24 @@ function Comments({currentUserId}){
         });
     };
 
+
     useEffect(() => {
-        getCommentsApi().then(data => {
+        setLoading(true);
+        /*REPLACE GET COMMENTS API WITH ENDPOINT HERE 
+        const request = axios.get('').then( ...... ) */
+        getCommentsApi().then( data => {
             setBackendComments(data)
         })
+        setLoading(false);
+        
     }, [])
+
     return(
         <div className = "comments">
             <h3 className = "comments-title"> Comments </h3>
             <div className ="comment-form-title">Write comment</div>
             <CommentForm submitLabel="Comment" handleSubmit ={addComment}/>
+            {!isLoading && 
             <div className = "comments-container">
                 {/* Get all root comments from backend */}
                 {rootComments.map(rootComment => (
@@ -91,6 +109,8 @@ function Comments({currentUserId}){
                     />
                 ))}
             </div>
+            }
+            {isLoading && <h2> Loading Comments ...</h2> }
         </div>
     );
 }

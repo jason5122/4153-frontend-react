@@ -1,4 +1,4 @@
-import './../css_files/Feed.css'
+import './../css_files/NavBar.css'
 
 function NavBar(){
     return(

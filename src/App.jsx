@@ -1,23 +1,23 @@
-import { Component, useState } from 'react';
 import './App.css';
-import NavBar from './components/Feed.jsx';
+import NavBar from './components/NavBar.jsx';
 import Comments from './components/Comments.jsx'
-function Greeting({ name }) {
-  return (
-    <div className = "main-header">
-      <h1>Hello, {name}!</h1>
-      <Comments currentUserId="1"/> {/* ADD BACKEND CONNECTION TO RETRIEVE COMMENT HERE*/}
-    </div>
-  ) 
-}
+import Threads from './components/Threads.jsx'
+import {
+  BrowserRouter as Router, Routes, Route
+} from "react-router-dom"
 
 
 
 function App() {
   return (
     <>
-      <NavBar />
-      <Greeting name='Person 1' />      
+    <NavBar />
+    <Threads />
+    <Routes>
+      <Route path = "/comments/:threadKey" element = {<Comments currentUserId = "1" />}/> 
+    </Routes>
+    
+    {/* ADD BACKEND CONNECTION TO RETRIEVE COMMENT HERE <Comments currentUserId="1" threadKey='125'/>  */}   
     </>
   );
 }
