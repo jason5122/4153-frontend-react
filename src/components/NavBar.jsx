@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function NavBar(){
     return(
       <nav className = "nav-container">
-        <a href = "#" className = "nav-logo"> DinkDash</a>
+        <Link to={`/`} className = "nav-logo"> DinkDash </Link>
         <div className= "nav-menu">
           <ul className="nav-list">
             <li className="nav-item">      
