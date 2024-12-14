@@ -1,0 +1,39 @@
+.add-friend-container {
+    padding: 20px;
+}
+
+.add-friend-container .search-container,
+.add-friend-container .friend-requests-container,
+.add-friend-container .friends-list-container {
+    margin-bottom: 20px;
+}
+
+.add-friend-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.add-friend-container li {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-friend-container button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.add-friend-container .message {
+    color: green;
+    font-weight: bold;
+}
+
+.scrollable-user-list {
+    max-height: 300px; /* Adjust height to fit 7 users comfortably */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Optional: add a border for visual clarity */
+    padding: 10px; /* Optional: add some padding */
+}

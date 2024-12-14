@@ -80,8 +80,10 @@ function Comment({
                 {/* If is replying to a comment, generate comment form */}
                 {isReplying && (
                     <CommentForm 
-                        submitLabel = "Reply"  
+                        submitLabel = "Reply"
+                        hasCancelButton
                         handleSubmit={(text) => addComment(text, replyId)}
+                        handleCancel={() => setActiveComment(null)}
                     />
                 )}
 
